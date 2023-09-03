@@ -28,7 +28,11 @@ def gen2(idx, ori_name, name, sql, params):
     if type(params[idx]['enums']) == str:
         e = params[idx]['enums']
         t = e
-        gen2(idx+1, ori_name, name+"-"+e, sql.replace(params[idx]['replaces'], t), params)
+        if t == 'repo_subset' or t == 'collectionIds':
+            # ignore replace
+            gen2(idx+1, ori_name, name+"-"+e, sql, params)
+        else:
+            gen2(idx+1, ori_name, name+"-"+e, sql.replace(params[idx]['replaces'], t), params)
     else:
         for i in range(len(params[idx]['enums'])):
             e = params[idx]['enums'][i]
@@ -39,7 +43,11 @@ def gen2(idx, ori_name, name, sql, params):
                 if e not in params[idx]['template']:
                     continue
                 t = params[idx]['template'][e]
-            gen2(idx+1, ori_name, name+"-"+e, sql.replace(params[idx]['replaces'], t), params)
+            if t == 'repo_subset' or t == 'collectionIds':
+                # ignore replace
+                gen2(idx+1, ori_name, name+"-"+e, sql, params)
+            else:
+                gen2(idx+1, ori_name, name+"-"+e, sql.replace(params[idx]['replaces'], t), params)
 
 def gen(name, template_sql, params_json):
     params = json.loads(params_json)
