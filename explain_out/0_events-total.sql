@@ -1,0 +1,7 @@
+"id","estRows","task","access object","operator info"
+"Projection_4","1.00","root","","Column#35, Column#36, unix_timestamp(Column#36)->Column#37"
+"└─HashAgg_37","1.00","root","","funcs:count(Column#85)->Column#35, funcs:max(Column#86)->Column#36"
+"  └─TableReader_39","1.00","root","partition:all","MppVersion: 1, data:ExchangeSender_38"
+"    └─ExchangeSender_38","1.00","mpp[tiflash]","","ExchangeType: PassThrough"
+"      └─HashAgg_9","1.00","mpp[tiflash]","","funcs:count(1)->Column#85, funcs:max(gharchive_dev.github_events.created_at)->Column#86"
+"        └─TableFullScan_36","6349301992.00","mpp[tiflash]","table:github_events","keep order:false, PartitionTableScan:true"

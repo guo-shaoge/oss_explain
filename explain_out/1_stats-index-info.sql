@@ -1,0 +1,5 @@
+"id","estRows","task","access object","operator info"
+"Projection_5","8000.00","root","","Column#2, Column#4, any_value(Column#3)->Column#14, Column#13, any_value(Column#11)->Column#15, any_value(Column#12)->Column#16"
+"└─HashAgg_6","8000.00","root","","group by:Column#2, Column#4, funcs:group_concat(Column#6 order by Column#5 separator "","")->Column#13, funcs:firstrow(Column#2)->Column#2, funcs:firstrow(Column#3)->Column#3, funcs:firstrow(Column#4)->Column#4, funcs:firstrow(Column#11)->Column#11, funcs:firstrow(Column#12)->Column#12"
+"  └─Selection_7","8000.00","root","","eq(Column#1, ""gharchive_dev""), eq(Column#2, ""github_events"")"
+"    └─MemTableScan_8","10000.00","root","table:TIDB_INDEXES",""

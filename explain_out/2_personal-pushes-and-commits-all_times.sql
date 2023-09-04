@@ -1,0 +1,7 @@
+"id","estRows","task","access object","operator info"
+"Sort_9","3707.15","root","","Column#37"
+"└─Projection_11","3707.15","root","","date_format(gharchive_dev.github_events.created_at, %Y-%m-01)->Column#37, Column#35, ifnull(Column#36, 0)->Column#38"
+"  └─HashAgg_20","3707.15","root","","group by:Column#46, funcs:count(Column#47)->Column#35, funcs:sum(Column#48)->Column#36, funcs:firstrow(Column#49)->gharchive_dev.github_events.created_at"
+"    └─IndexReader_21","3707.15","root","partition:push_event","index:HashAgg_13"
+"      └─HashAgg_13","3707.15","cop[tikv]","","group by:date_format(gharchive_dev.github_events.created_at, ""%Y-%m-01""), funcs:count(1)->Column#47, funcs:sum(gharchive_dev.github_events.push_distinct_size)->Column#48, funcs:firstrow(gharchive_dev.github_events.created_at)->Column#49"
+"        └─IndexRangeScan_19","63493.02","cop[tikv]","table:ge, index:index_ge_on_actor_id_type_action_created_at_repo_id_commits(actor_id, type, action, created_at, repo_id, push_distinct_size)","range:[5086433 ""PushEvent"",5086433 ""PushEvent""], keep order:false"

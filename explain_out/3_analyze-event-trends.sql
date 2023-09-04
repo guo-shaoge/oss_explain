@@ -1,0 +1,7 @@
+"id","estRows","task","access object","operator info"
+"Sort_9","92678.76","root","","Column#36"
+"└─Projection_11","92678.76","root","","date_format(gharchive_dev.github_events.created_at, %Y-%m-01)->Column#36, Column#35"
+"  └─HashAgg_20","92678.76","root","","group by:Column#40, funcs:count(Column#41)->Column#35, funcs:firstrow(Column#42)->gharchive_dev.github_events.created_at"
+"    └─IndexReader_21","92678.76","root","partition:all","index:HashAgg_13"
+"      └─HashAgg_13","92678.76","cop[tikv]","","group by:date_format(gharchive_dev.github_events.created_at, ""%Y-%m-01""), funcs:count(1)->Column#41, funcs:firstrow(gharchive_dev.github_events.created_at)->Column#42"
+"        └─IndexRangeScan_19","1587325.50","cop[tikv]","table:github_events, index:index_ge_on_repo_id_created_at(repo_id, created_at)","range:[41986369 2000-01-01 00:00:00,41986369 2099-12-31 00:00:00), keep order:false"

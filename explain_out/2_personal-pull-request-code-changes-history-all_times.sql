@@ -1,0 +1,7 @@
+"id","estRows","task","access object","operator info"
+"Sort_9","1.00","root","","Column#38"
+"└─Projection_11","1.00","root","","date_format(gharchive_dev.github_events.created_at, %Y-%m-01)->Column#38, Column#35, Column#36, Column#37"
+"  └─HashAgg_20","1.00","root","","group by:Column#44, funcs:sum(Column#45)->Column#35, funcs:sum(Column#46)->Column#36, funcs:sum(Column#47)->Column#37, funcs:firstrow(Column#48)->gharchive_dev.github_events.created_at"
+"    └─IndexReader_21","1.00","root","partition:pull_request_event","index:HashAgg_13"
+"      └─HashAgg_13","1.00","cop[tikv]","","group by:date_format(gharchive_dev.github_events.created_at, ""%Y-%m-01""), funcs:sum(gharchive_dev.github_events.additions)->Column#45, funcs:sum(gharchive_dev.github_events.deletions)->Column#46, funcs:sum(plus(gharchive_dev.github_events.additions, gharchive_dev.github_events.deletions))->Column#47, funcs:firstrow(gharchive_dev.github_events.created_at)->Column#48"
+"        └─IndexRangeScan_19","6.35","cop[tikv]","table:ge, index:index_ge_on_creator_id_type_action_merged_created_at_add_del(creator_user_id, type, action, pr_merged, created_at, additions, deletions)","range:[5086433 ""PullRequestEvent"" ""closed"" 1,5086433 ""PullRequestEvent"" ""closed"" 1], keep order:false"

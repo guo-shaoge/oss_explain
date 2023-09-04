@@ -1,0 +1,6 @@
+"id","estRows","task","access object","operator info"
+"Projection_5","2179.83","root","","date_format(gharchive_dev.github_events.created_at, %Y-%m-01)->Column#36, Column#35"
+"└─HashAgg_7","2179.83","root","","group by:Column#52, funcs:count(distinct Column#50)->Column#35, funcs:firstrow(Column#51)->gharchive_dev.github_events.created_at"
+"  └─Projection_34","46668.02","root","","gharchive_dev.github_events.actor_login, gharchive_dev.github_events.created_at, date_format(gharchive_dev.github_events.created_at, %Y-%m-01)->Column#52"
+"    └─IndexReader_15","46668.02","root","partition:pull_request_event","index:IndexRangeScan_14"
+"      └─IndexRangeScan_14","46668.02","cop[tikv]","table:ge, index:index_ge_on_repo_id_type_action_created_at(repo_id, type, action, created_at, pr_merged, actor_login, number, push_distinct_size, push_size, additions, deletions)","range:[41986369 ""PullRequestEvent"" ""opened"",41986369 ""PullRequestEvent"" ""opened""], keep order:false"

@@ -1,0 +1,7 @@
+"id","estRows","task","access object","operator info"
+"Sort_9","37.07","root","","Column#36"
+"└─Projection_11","37.07","root","","date_format(gharchive_dev.github_events.created_at, %Y-%m-01)->Column#36, Column#35"
+"  └─HashAgg_20","37.07","root","","group by:Column#42, funcs:count(Column#43)->Column#35, funcs:firstrow(Column#44)->gharchive_dev.github_events.created_at"
+"    └─IndexReader_21","37.07","root","partition:watch_event","index:HashAgg_13"
+"      └─HashAgg_13","37.07","cop[tikv]","","group by:date_format(gharchive_dev.github_events.created_at, ""%Y-%m-01""), funcs:count(1)->Column#43, funcs:firstrow(gharchive_dev.github_events.created_at)->Column#44"
+"        └─IndexRangeScan_19","634.93","cop[tikv]","table:ge, index:index_ge_on_actor_id_type_action_created_at_repo_id_commits(actor_id, type, action, created_at, repo_id, push_distinct_size)","range:[5086433 ""WatchEvent"" ""started"",5086433 ""WatchEvent"" ""started""], keep order:false"

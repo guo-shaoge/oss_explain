@@ -12,3 +12,7 @@ go run run_explain.go
 go run check_tiflash.go
 
 将包含 tiflash 的计划的 sql 打印到 stdout
+
+# query 分类
+1. bot*: once
+2. events
