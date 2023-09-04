@@ -1,19 +1,19 @@
 # 生成 query
 python gen.py
-会读取 /home/guojiangtao/work/ossinsight/configs/queries 目录中所有 template, 并根据 param.json 生成具体的 query
+会读取 /home/guojiangtao/work/ossinsight/configs/queries (git clone git@github.com:pingcap/ossinsight.git) 目录中所有 template, 并根据 param.json 生成具体的 query
 输出文件放在 ./generated_queries
 
-# 拿到所有包含 tiflash 的 query
+# 拿到所有 query 的 explain 结果
 go run run_explain.go &> explain_cmd_out
 
 会向 TiDB 集群发送 explain + sql , 结果放在 ./explain_out
 
-# 检查哪些 sql 包含 tiflash 的计划
+# 检查哪些 query 的计划包含 tiflash
 go run check_tiflash.go &> ap_sql
 
 将包含 tiflash 的计划的 sql 打印到 stdout
 
-# query 分类
+# tiflash query 频率分类
 1. bot*: once
 2. events
     1. events-dailiy: daily
